@@ -23,7 +23,8 @@ def parse_quote_request(msg, conn):
         number = int(command)
         cursor.execute('''
                 SELECT author, text FROM Quotes
-                WHERE chan_id = %s''', (chan_id,))
+                WHERE serv_id = %s
+                ORDER BY id''', (serv_id,))
         list_quotes = []
         for i in cursor:
             list_quotes.append(i)
@@ -37,7 +38,8 @@ def parse_quote_request(msg, conn):
     if len(command) < 1:
         cursor.execute('''
         SELECT author, text FROM Quotes
-        WHERE chan_id = %s''', (chan_id,))
+        WHERE serv_id = %s
+        ORDER BY id''', (serv_id,))
         list_quotes = []
         for i in cursor:
             list_quotes.append(i)
@@ -60,8 +62,9 @@ def parse_quote_request(msg, conn):
             number = 0
         cursor.execute('''
         SELECT author, text FROM Quotes
-        WHERE chan_id = %s
-        AND LOWER(author) = LOWER(%s)''', (chan_id, author))
+        WHERE serv_id = %s
+        AND LOWER(author) = LOWER(%s)
+        ORDER BY id''', (serv_id, author))
         list_quotes = []
         for i in cursor:
             list_quotes.append(i)
