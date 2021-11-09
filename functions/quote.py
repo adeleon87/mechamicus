@@ -24,7 +24,7 @@ def parse_quote_request(msg, conn):
         cursor.execute('''
                 SELECT author, text FROM Quotes
                 WHERE serv_id = %s
-                ORDER BY id''', (serv_id,))
+                ORDER BY date''', (serv_id,))
         list_quotes = []
         for i in cursor:
             list_quotes.append(i)
@@ -39,7 +39,7 @@ def parse_quote_request(msg, conn):
         cursor.execute('''
         SELECT author, text FROM Quotes
         WHERE serv_id = %s
-        ORDER BY id''', (serv_id,))
+        ORDER BY date''', (serv_id,))
         list_quotes = []
         for i in cursor:
             list_quotes.append(i)
@@ -64,7 +64,7 @@ def parse_quote_request(msg, conn):
         SELECT author, text FROM Quotes
         WHERE serv_id = %s
         AND LOWER(author) = LOWER(%s)
-        ORDER BY id''', (serv_id, author))
+        ORDER BY date''', (serv_id, author))
         list_quotes = []
         for i in cursor:
             list_quotes.append(i)
