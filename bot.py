@@ -10,7 +10,7 @@ from functions.subfunctions.split_file import split_file
 
 token = sys.argv[1]
 
-prefix = '/'
+prefix = '.'
 eight_ball = split_file('eightball')
 dice_double_check = r'^(?:(\d+)d(\d+))'
 
