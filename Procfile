@@ -1,1 +1,1 @@
-worker: python bot.py $token $gcsKey $DATABASE_URL
+worker: python -m bot.py $token $gcsKey $DATABASE_URL
